@@ -2,6 +2,8 @@
 
 Dim common path prefixes between adjacent Telescope results so the unique tail stands out.
 
+<img width="892" height="399" alt="image" src="https://github.com/user-attachments/assets/bad3e195-39f3-475b-b6ad-a67a737502eb" />
+
 ## Features
 
 - Highlights shared path prefixes between neighbors in the results list
