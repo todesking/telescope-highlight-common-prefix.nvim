@@ -6,8 +6,6 @@ Dim common path prefixes between adjacent Telescope results so the unique tail s
 
 - Highlights shared path prefixes between neighbors in the results list
 - Compare direction can be `prev` or `next`
-- Custom `common_prefix` function supported
-- Works with `TelescopeResumePost` via `on_resume`
 
 ## Requirements
 
@@ -30,6 +28,7 @@ local telescope = require("telescope")
 local hl = require("telescope_highlight_common_prefix")
 
 local on_complete = hl.new_complete_handler({
+    -- options here
 })
 
 telescope.setup({
@@ -54,27 +53,16 @@ vim.api.nvim_create_autocmd("User", {
 
 These keys are options passed to `new_complete_handler()`.
 
-### compare
+### `compare: "prev" | "next"`
 
 - `"prev"`: compare each entry to the previous visible entry
 - `"next"`: compare each entry to the next visible entry
 
 default: `"prev"`
 
-### common_prefix
+### `common_prefix: fun(string, string): integer`
 
 Override how the common prefix length is computed (return a byte length). The default checks path segments (split by `/`).
-
-```lua
-common_prefix = function(left, right)
-  local max = math.min(#left, #right)
-  local i = 1
-  while i <= max and left:sub(i, i) == right:sub(i, i) do
-    i = i + 1
-  end
-  return i - 1
-end
-```
 
 ## Notes
 
